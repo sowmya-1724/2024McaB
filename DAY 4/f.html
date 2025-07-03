@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Navigation Page</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+            font-family: inherit;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .navbar a:hover, .dropdown:hover .dropbtn {
+            background-color: rgb(73, 156, 215);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color:pink;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .login {
+            float: right;
+        }
+
+        .login a {
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .login a:hover {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="Home.html">Home</a>
+
+        <div class="dropdown">
+            <button class="dropbtn">Sem 1</button>
+            <div class="dropdown-content">
+                <a href="#">101</a>
+                <a href="#">102</a>
+                <a href="#">103</a>
+                <a href="#">104</a>
+                <a href="#">105</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Sem 2</button>
+            <div class="dropdown-content">
+                <a href="#">106</a>
+                <a href="#">107</a>
+                <a href="#">108</a>
+                <a href="#">109</a>
+                <a href="#">110</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Sem 3</button>
+            <div class="dropdown-content">
+                <a href="#">111</a>
+                <a href="#">112</a>
+                <a href="#">113</a>
+                <a href="#">114</a>
+                <a href="#">115</a>
+            </div>
+        </div>
+
+        <div class="dropdown">
+            <button class="dropbtn">Sem 4</button>
+            <div class="dropdown-content">
+                <a href="#">116</a>
+                <a href="#">117</a>
+                <a href="#">118</a>
+                <a href="#">119</a>
+                <a href="#">120</a>
+            </div>
+        </div>
+
+        <div class="login">
+            <a href="InteractiveLogin.html">Login</a>
+        </div>
+    </div>
+</body>
+</html>

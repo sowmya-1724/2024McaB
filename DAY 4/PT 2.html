@@ -1,0 +1,75 @@
+<html>
+<head>
+    <script type=text/javascript>
+
+        function largestDigit()
+        {
+            var num=parseInt(document.getElementById("txtNumber").value);
+            id=0;
+           while(num>0){
+            rem=num %10;
+            if(rem>id)id=rem;
+            num=Math.floor(num/10);
+        }
+        document.getElementById("txtAns").value=id;
+    }
+
+function smallDigit()
+        {
+            var num=parseInt(document.getElementById("txtNumber").value);
+            id=9;
+        while(num>0){
+            rem=num %10;
+            if(rem<id)id=rem;
+            num=Math.floor(num/10);
+        }
+        document.getElementById("txtAns").value=id;
+    }
+
+    function sumDigit()
+        {
+            var num=parseInt(document.getElementById("txtNumber").value);
+
+            id=0;
+            while(num>0){
+            rem=num %10;
+            id+=rem;
+            num=Math.floor(num/10);
+        }
+        document.getElementById("txtAns").value=id;
+    }
+
+    function revDigit()
+        {
+            var num=parseInt(document.getElementById("txtNumber").value);
+
+        
+            id=0;
+            while(num>0){
+            rem=num %10;
+            id=rem+=;
+            num=Math.floor(num/10);
+        }
+        document.getElementById("txtAns").value=id;
+    }
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+    <p>Enter a Number:<input id="txtNumber"></p>
+
+
+<button onclick="largestDigit()">largestDigit</button>
+<button onclick="sumDigit()">sumDigit</button>
+<button onclick="smallDigit()">smallDigit</button>
+<button onclick="revDigit()">revDigit</button>
+
+<p>Sum of digits:<input id="txtAns"></p>
+</body>
+</html>
