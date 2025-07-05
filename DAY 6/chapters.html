@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cascading Dropdown: Subjects → Topics → Chapters</title>
+  <style>
+    select {
+      margin: 10px;
+      padding: 5px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Cascading Dropdown Example</h2>
+
+  <label>Subject:</label>
+  <select id="subject" onchange="loadTopics()">
+    <option value="">--Select Subject--</option>
+    <option value="JAVA">JAVA</option>
+    <option value="ADBMS">ADBMS</option>
+    <option value="Python">Python</option>
+  </select>
+
+<br /><br />
+
+  <label>Topic:</label>
+  <select id="topic" onchange="loadChapters()">
+    <option value="">--Select Subject--</option>
+    <option value="Html">Html</option>
+    <option value="Css">Css</option>
+    <option value="Js">Js</option>
+  </select>
+
+<br /><br />
+
+  <label>Chapter:</label>
+  <select id="chapter">
+    <option value="">--Select Subject--</option>
+    <option value="Chapter1">Chapter1</option>
+    <option value="Chapter2">Chapter2</option>
+    <option value="Chapter3">Chapter3</option>
+  </select>
+
+  <br /><br />
+
+
+  <button onclick="handleSubmit()">Submit</button>
+
+  <div id="result"></div>
+
+<script>
+  const data = {
+    math: {
+      algebra: ["Linear Equations", "Quadratic Equations"],
+      geometry: ["Triangles", "Circles"]
+    },
+    science: {
+      physics: ["Motion", "Force", "Energy"],
+      biology: ["Cells", "Genetics"]
+    },
+    english: {
+      grammar: ["Nouns", "Verbs", "Tenses"],
+      literature: ["Poetry", "Drama"]
+    }
+  };
+
+  function loadTopics() {
+    const subject = document.getElementById("subject").value;
+    const topicSelect = document.getElementById("topic");
+    const chapterSelect = document.getElementById("chapter");
+
+    // Clear previous options
+   // topicSelect.innerHTML = '<option value="">--Select Topic--</option>';
+    //hapterSelect.innerHTML = '<option value="">--Select Chapter--</option>';
+
+    if (subject && data[subject]) {
+      for (let topic in data[subject]) {
+        let option = document.createElement("option");
+        option.value = topic;
+        option.text = topic.charAt(0).toUpperCase() + topic.slice(1);
+        topicSelect.appendChild(option);
+      }
+    }
+  }
+  function loadChapters() {
+    const subject = document.getElementById("subject").value;
+    const topic = document.getElementById("topic").value;
+    const chapterSelect = document.getElementById("chapter");
+
+    // Clear previous options
+    //chapterSelect.innerHTML = '<option value="">--Select Chapter--</option>';
+
+    if (subject && topic && data[subject][topic]) {
+      data[subject][topic].forEach(chapter => {
+        let option = document.createElement("option");
+        option.value = chapter;
+        option.text = chapter;
+        chapterSelect.appendChild(option);
+      });
+    }
+  }
+
+  function handleSubmit() {
+    const subject = document.getElementById("subject").value;
+    const topic = document.getElementById("topic").value;
+    const chapter = document.getElementById("chapter").value;
+
+    if (!subject || !topic || !chapter) {
+      alert("Please select all fields before submitting.");
+      return;
+    }
+
+    document.getElementById("result").textContent =
+      `You selected: Subject = ${subject}, Topic = ${topic}, Chapter = ${chapter}`;
+  }
+</script>
+
+</body>
+</html>
+
