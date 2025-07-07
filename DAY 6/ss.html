@@ -1,74 +1,137 @@
-var selectedRow = null;
-function onFormSubmit() {
-var formData = readFormData();
-if(isValid()){
-    if (selectedRow == null) {
-    insertNewRecord(formData);
-    alert("Your details are saved Sucessfully........");
-  }
- else{
-  updateRecord(formData);
- }
-  resetForm();
-}
-}
+Conversation opened. 2 messages. 1 message unread.
 
-function readFormData() {
-  var formData = {};
-  formData["facName"] = document.getElementById("facName").value;
-  formData["facDep"] = document.getElementById("facDep").value;
-  formData["facSub"] = document.getElementById("facSub").value;
-  return formData;
-}
-function resetForm() {
-  document.getElementById("facName").value = "";
-  document.getElementById("facDep").value = "";
-  document.getElementById("facSub").value = "";
-  selectedRow = null;
-}
-function insertNewRecord(data) {
-  var table = document
-    .getElementById("faclist")
-    .getElementsByTagName("tbody")[0];
-  var newRow = table.insertRow(table.length);
-  cell1 = newRow.insertCell(0);
-  cell1.innerHTML = data.facName;
-  cell2 = newRow.insertCell(1);
-  cell2.innerHTML = data.facDep;
-  cell3 = newRow.insertCell(2);
-  cell3.innerHTML = data.facSub;
-  cell4 = newRow.insertCell(3);
-  cell4.innerHTML = `<a onClick="onEdit(this)">Update</a><a onClick="onDelete(this)">Delete</a>`;
-}
-function onEdit(td)
-{if(confirm("Are you upadate your details")){
-selectedRow=td.parentElement.parentElement;  
-document.getElementById("facName").value=selectedRow.cells[0].innerHTML;
-document.getElementById("facDep").value=selectedRow.cells[1].innerHTML;
-document.getElementById("facSub").value=selectedRow.cells[2].innerHTML;}
-}
-function updateRecord(formData)
-{
-  alert("Your form updated sucessfully.......")
-selectedRow.cells[0].innerHTML=formData.facName;
-selectedRow.cells[1].innerHTML=formData.facDep;
-selectedRow.cells[2].innerHTML=formData.facSub;
-}
-function onDelete(td)
-{
-if(confirm("are you want to delete this record")){
-  row=td.parentElement.parentElement;
-  document.getElementById("faclist").deleteRow(row.rowIndex);
-  resetForm();
-}
-}
+Skip to content
+Using Gmail with screen readers
+1 of 345
+Mail-ID Verification Purpose
+Inbox
 
-function isValid(){
-var a=document.getElementById("facName").value;
-// var b = document.getElementById("facDep").value;
-// var c= document.getElementById("facSub").value;
-if(a==""|| a==null ){return false;}
-else
-{return true;}
+mti mca
+18 Dec 2024, 10:38
+********Hello All, This is Just Verifying your mail-ID. Don't reply to this email.************ Who has not received this E-mail please contact your Admin.
 
-}
+RAKESH Raki <derangirakesh@gmail.com>
+Attachments
+10:57 (1 hour ago)
+to Nandhini, TS, Tnarasimha, Navamohan, Naveen, anavyasree500, Nøwshåd, pavankumapk03, Pavan, punith, redditejasurappagari123, donthollusagarika828, Preethi, Sai, sanyadeepthe284, kumar7d1432, Thulasi, Shilpa, siri999811siri1819, SHOT, Shiva, me, ssravani5566, G, SRIKAR, tk8615141, Ellala, Chinnu, Puday, udaykumark125, ummaesalma7861, Upendra, aaushasree, Vamsi, Varsha, Chitimi, Kalupati, venki12617, N, AK, chruthakanti, yaswanth2k3, Yuva, zuhanaaz6055
+
+
+One attachment
+  • Scanned by Gmail
+Day 1 Django tutorial tailored for absolute beginners. This tutorial covers the essential setup and helps you build your first Django project step-by-step.
+________________________________________
+🌐 What is Django?
+Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It's built by experienced developers and handles much of the hassle of web development.
+________________________________________
+✅ Day 1 Goals
+•	Install Django
+•	Create your first Django project
+•	Run the development server
+•	Create a simple app
+•	Create your first view and URL
+________________________________________
+🛠️ Step 1: Install Django
+Make sure Python is installed:
+
+python --version
+If not, install it from python.org.
+Create and activate a virtual environment:
+
+python -m venv env
+source env/bin/activate   # On Windows use: env\Scripts\activate
+Install Django:
+
+pip install django
+Verify Django installation:
+
+django-admin --version
+________________________________________
+📁 Step 2: Create Your First Project
+
+django-admin startproject myproject
+cd  myproject
+Folder structure:
+
+ myproject/
+    manage.py
+     myproject/
+        __init__.py
+        settings.py
+        urls.py
+        asgi.py
+        wsgi.py
+________________________________________
+▶️ Step 3: Run the Development Server
+
+python manage.py runserver
+Visit: http://127.0.0.1:8000/
+You should see the Django welcome page.
+ctrl+c
+________________________________________
+🧱 Step 4: Create Your First App
+Django projects are made of multiple apps. Let’s create one called hello.
+
+python manage.py startapp hello
+You’ll now see a new folder hello/ with these files:
+
+hello/
+    admin.py
+    apps.py
+    models.py
+    tests.py
+    views.py
+    ...
+________________________________________
+🔗 Step 5: Add the App to Settings
+Open  myproject/settings.py and add 'hello', to INSTALLED_APPS:
+
+INSTALLED_APPS = [
+    ...
+    'hello',
+]
+________________________________________
+📄 Step 6: Create a Simple View
+Open hello/views.py and add:
+
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello, sowmya!")
+________________________________________
+🛣️ Step 7: Create URL Configuration
+In hello/, create a file called urls.py:
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('home/', views.home, name='home'),
+
+]
+
+Now connect this to the main project’s URL configuration.
+Open  myproject/urls.py and modify:
+
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('hello/', include('hello.urls')),
+]
+________________________________________
+🧪 Step 8: Test the App
+Run the server again (if it’s not already running):
+
+python manage.py runserver
+Visit: http://127.0.0.1:8000/hello/home/
+You should see: Hello, Django!
+________________________________________
+🎯 Recap for Day 1
+You've learned:
+•	How to set up Django
+•	How to create a project and an app
+•	How views and URLs work
+
+day1_django.txt
+Displaying day1_django.txt.

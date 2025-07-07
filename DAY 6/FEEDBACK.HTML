@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+    <title>
+        Fac Feedback Form
+    </title>
+ 
+    <style>
+  /* Styling the Body element i.e. Color,        Font, Alignment */
+        body {
+            background-color:pink;
+            font-family: Verdana;
+            text-align: center;
+        }
+         /* Styling the Form (Color, Padding, Shadow) */
+        form {
+            background-color: #eee8e8;
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 30px 20px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+        }
+         /* Styling form-control Class */
+        .form-control {
+            text-align: left;
+            margin-bottom: 25px;
+        }
+.
+        /* Styling form-control Label */
+        .form-control label {
+            display: block;
+            margin-bottom: 10px;
+        }
+ 
+        /* Styling form-control input,
+        select, textarea */
+        .form-control input,
+        .form-control select,
+        .form-control textarea {
+            border: 1px solid#777;
+            border-radius: 2px;
+            font-family: inherit;
+            padding: 10px;
+            display: block;
+            width: 95%;
+        }
+ 
+        /* Styling form-control Radio
+        button and Checkbox */
+        .form-control input[type="radio"],
+        .form-control input[type="checkbox"] {
+            display: inline-block;
+            width: auto;
+        }
+ 
+        /* Styling Button */
+        button {
+            background-color:skyblue;
+            border: 1px solid #777;
+            border-radius: 2px;
+            font-family: inherit;
+            font-size: 21px;
+            display: block;
+            width: 100%;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+    </style>
+   
+
+</head>
+ 
+<body>
+    <h1>Feedback Form</h1>
+ 
+    <!-- Create Form -->
+    <form id="form">
+ 
+        <!-- Details -->
+        <div class="form-control">
+            <label for="name" id="label-name">
+                Faculty Name:
+            </label>
+ 
+            <!-- Input Type Text -->
+            <input type="text"
+                   id="name"
+                   placeholder="Enter faculty name" />
+        </div>
+
+        <div class="form-control">
+            <label for="Trainer name" id="label-Trainer name">
+                Trainer Name
+            </label>
+ 
+            <!-- Input Type Email-->
+            <input type="Trainer name"
+                   id="Trainer name"
+                   placeholder="Enter your Trainer Name" />
+        </div>
+  
+ 
+   
+ 
+        <div class="form-control">
+            <label for="role" id="label-role">
+                Select Training
+            </label>
+             
+            <!-- Dropdown options -->
+            
+              <select name="role" id="role">
+
+               <option value="student">Student</option>
+                <option value="Python">Python</option>
+                <option value="JAVA">JAVA</option>
+                <option value="HTML">
+                    HTML
+                </option>
+                <option value="DJANGO">DJANGO</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-control">
+            <label for="role" id="label-role">
+                Course Eligible
+            </label>
+             
+            <!-- Dropdown options -->
+            
+              <select name="role" id="role">
+
+               <option value="student">Student</option>
+                <option value="MBA">MBA</option>
+                <option value="MCA">MCA</option>
+                <option value="BCA">
+                    BCA
+                </option>
+                <option value="DJANGO">DJANGO</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+       
+ 
+        <div class="form-control">
+            <label>
+                Overall Rating:
+            </label><br>
+ <center>
+            <!-- Input Type Radio Button -->
+            <label for="recommed-1">
+                <input type="radio"
+                       id="recommed-1"
+                       name="recommed">Excellent</input>
+            </label>
+            <label for="recommed-2">
+                <input type="radio"
+                       id="recommed-2"
+                       name="recommed">GUD</input><br>
+            </label>
+            <label for="recommed-3">
+                <input type="radio"
+                       id="recommed-3"
+                       name="recommed">Avg</input>
+            </label>
+            <label for="recommed-4">
+                <input type="radio"
+                       id="recommed-4"
+                       name="recommed">poor</input><br>
+            </label>
+        </div></center>
+ 
+        <div class="form-control">
+            <label>Topics Covered
+                <small>(Check all that apply)</small><br>
+            </label>
+            <!-- Input Type Checkbox -->
+            <label for="inp-3">
+                <input type="checkbox"
+                       name="inp">Content Quality</input></label><br>
+            <label for="inp-4">
+                <input type="checkbox"
+                       name="inp">Delivery</input></label><br>
+            <label for="inp-5">
+                <input type="checkbox"
+                       name="inp">Interaction</input></label><br>
+            <label for="inp-6">
+                <input type="checkbox"
+                       name="inp">Relevance</input></label><br>
+           
+           
+        </div>
+ 
+        <div class="form-control">
+            <label for="comment">
+                Any Feedback
+            </label>
+ 
+            <!-- multi-line text input control -->
+            <textarea name="comment" id="comment"
+                placeholder="Enter your comment">
+            </textarea>
+        </div>
+ 
+        <!-- Multi-line Text Input Control -->
+        <button type="submit" value="submit">
+            Submit Feedback
+        </button>
+    </form>
+    <script>
+    document.getElementById("form").addEventListener("submit", function(e) {
+        e.preventDefault(); // prevent form from submitting
+
+        var name = document.getElementById("name").value;
+        var training = document.getElementById("role").value;
+
+        // Get selected radio button
+        var rating = document.querySelector('input[name="recommed"]:checked');
+        rating = rating ? rating.parentElement.innerText : "Not selected";
+
+        // Get checked checkboxes
+        var checkboxes = document.querySelectorAll('input[name="inp"]:checked');
+        var topics = [];
+        checkboxes.forEach(function(checkbox) {
+            topics.push(checkbox.parentElement.innerText);
+        });
+
+        var comment = document.getElementById("comment").value;
+
+        // Show alert with all the details
+        alert(
+            "Faculty Name: " + name + "\n" +
+            "Training Attended: " + training + "\n" +
+            "Overall Rating: " + rating + "\n" +
+            "Topics Covered: " + topics.join(", ") + "\n" +
+            "Feedback: " + comment
+        );
+    });
+</script>
+</body>
+</html>
+
