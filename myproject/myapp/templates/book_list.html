@@ -1,0 +1,26 @@
+<!-- book_list.html -->
+{%   extends  "master.html"  %}
+{% block title %}Book List{% endblock %}
+{%  block content  %}
+    <h1>Book List</h1>
+
+    <table border="2">
+        <tr>
+            <th>title</th>
+            <th>Author</th>
+            <th>publication_date</th>
+            <th>Action</th>
+
+        </tr>
+
+        {% for book in books %}
+        <tr>
+ <td> {{ book.title }} </td> <td>{{ book.author }} </td> <td>{{ book.publication_date }}</td>
+ <td>
+    <a href="/update/{{ book.id}}">Update</a>
+    <a href="/delete/{{ book.id}}">delete</a>
+ </td>
+  </tr>
+        {% endfor %}
+    </ul>
+ {% endblock %}
