@@ -1,0 +1,14 @@
+<!-- student_form.html -->
+{%   extends  "master.html"  %}
+{% student title %}
+{% if form.instance.pk %}Update{% else %}Create{% endif %} student
+{% endblock %}
+
+{%  student content  %}
+    <h1>{% if form.instance.pk %}Update{% else %}Create{% endif %} student</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}
