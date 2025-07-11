@@ -1,0 +1,15 @@
+
+<!DOCTYPE html>
+<html>
+<head><title>Edit Student</title></head>
+<body>
+    <h2>Edit Student - {{ student.rollno }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        Name: <input type="text" name="name" value="{{ student.name }}"><br><br>
+        Marks: <input type="text" name="marks" value="{{ student.marks }}"><br><br>
+        <input type="submit" value="Update Student">
+        <a href="{% url 'list_students' %}">Cancel</a>
+    </form>
+</body>
+</html>
