@@ -1,28 +1,42 @@
+{% extends 'base.html' %}
+{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Product Catalog</title>
     <style>
-        img {width: 100px; height:100px}
-        .product { border: 1px solid #ccc; padding: 10px; margin: 10px; display: inline-block; }
+        img { max-width: 150px; }
+        img { max-height: 150px; }
+        .product { border: 5px solid #ee31a6ba; padding: 10px; margin: 10px; display: inline-block;height:200px; width:150px; 
+        background-color: rgb(38, 159, 245);
+        }
     </style>
 </head>
 <body bgcolor="pink">
-    <h1>Products</h1>
-    <h2>my fav Items</h2>
-    <ul>
-        <li>pani puri</li>
-        <li>gobi</li>
-        <li>Biryani etc................</li>
-    </ul>
-    {% for product in products %}
-        <div class="product">
-            {% if product.image %}
-                <img src="{{ product.image.url }}" alt="{{ product.name }}">
-            {% endif %}
-            <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
-            <p>${{ product.price }}</p>
-        </div>
+   
+
+    <h1>Canteen Items</h1>
+
+<h3>Filter by Category:</h3>
+<ul>
+    <li><a href="/">All</a></li>
+    {% for category in categories %}
+        <li><a href="?category={{ category.id }}">{{ category.name }}</a></li>
     {% endfor %}
+</ul>
+
+{% for product in products %}
+    <div class="product">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="100px" height="100px">
+        {% endif %}
+        <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+        <p>RS{{ product.price }}</p>
+        
+    </div>
+
+{% endfor %}
+
 </body>
 </html>
+{% endblock %}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Your Cart</h2>
+
+    {% if cart_items %}
+        {% for item in cart_items %}
+            <div style="border:1px solid #ccc; padding:10px; margin-bottom:10px;">
+                <h3>{{ item.product.name }}</h3>
+                {% if item.product.image %}
+                    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="max-width:150px; height:auto;">
+                {% else %}
+                    <p>No image available</p>
+                {% endif %}
+                <p>Price: Rs{{ item.product.price }}</p>
+                <p>Quantity: {{ item.quantity }}</p>
+                <p>Subtotal: Rs{{ item.subtotal }}</p>
+            </div>
+        {% endfor %}
+
+        <h3>Total: Rs{{ total }}</h3>
+
+        <a href="/">Continue Shopping</a> |
+        <a href="{% url 'place_order' %}">Place Order</a>
+    {% else %}
+        <p>Your cart is empty.</p>
+        <a href="/">Go Shopping</a>
+    {% endif %}
+
+</body>
+</html>
