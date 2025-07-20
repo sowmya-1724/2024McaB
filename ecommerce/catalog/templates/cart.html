@@ -1,6 +1,5 @@
-{% extends 'base.html'%}
-{% block content %}
-
+<html>
+<body>
 <h2>Your Cart</h2>
 {% for product in products %}
     <div>
@@ -9,10 +8,7 @@
         <p>${{ product.price }}</p>
     </div>
 {% endfor %}
-<a href="/">Continue Shopping</a><br>
+<a href="/">Continue Shopping</a>
 <a href="{% url 'place_order' %}">Place Order</a>
-<br>
-
-<a href="{% url 'payment_page' %}">Make Payment</a>
-
-{% endblock %}
+</body>
+</html>

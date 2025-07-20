@@ -1,42 +1,125 @@
-{% extends 'base.html' %}
-{% block content %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Product Catalog</title>
     <style>
-        img { max-width: 150px; }
-        img { max-height: 150px; }
-        .product { border: 5px solid #ee31a6ba; padding: 10px; margin: 10px; display: inline-block;height:200px; width:150px; 
-        background-color: rgb(38, 159, 245);
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 60px; /* give space for fixed header */
+        }
+
+        /* Green fixed header */
+        .header-bar {
+            background-color: #18ceee; /* Bootstrap green */
+            color:black;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-bar .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header-bar .nav-links a {
+            color: black;
+            text-decoration: none;
+            margin-left: 20px;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .header-bar .nav-links a:hover {
+            background-color:burlywood; /* darker green */
+        }
+
+        /* Product display */
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px;
+            display: inline-block;
+            width: 200px;
+            text-align: center;
+        }
+
+        img {
+            max-width: 150px;
+            height: 150px;
+        }
+
+        form {
+            margin: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul li {
+            display: inline;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body bgcolor="pink">
-   
 
-    <h1>Canteen Items</h1>
-
-<h3>Filter by Category:</h3>
-<ul>
-    <li><a href="/">All</a></li>
-    {% for category in categories %}
-        <li><a href="?category={{ category.id }}">{{ category.name }}</a></li>
-    {% endfor %}
-</ul>
-
-{% for product in products %}
-    <div class="product">
-        {% if product.image %}
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="100px" height="100px">
-        {% endif %}
-        <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
-        <p>RS{{ product.price }}</p>
-        
+    <!-- Green Header Bar -->
+    <div class="header-bar">
+        <div class="logo">Canteen</div>
+        <div class="nav-links">
+         
+            <a href="{% url 'product_list' %}">All Products</a>
+            <a href="{% url 'view_cart' %}">View Cart</a>
+           
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'logout' %}">Logout</a>
+        </div>
     </div>
 
-{% endfor %}
+    <!-- Search Form -->
+    <form method="get">
+        <input type="text" name="q" placeholder="Search..." value="{{ request.GET.q }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <h1>Canteen</h1>
+    <h2>My Fav Items</h2>
+    <marquee>Availabel items</marquee>
+    
+    <!-- Category Filter -->
+    <h3>Filter by Category:</h3>
+    <ul>
+        <li><a href="{% url 'product_list' %}">All</a></li>
+        {% for category in categories %}
+            <li><a href="?category={{ category.id }}">{{ category.name }}</a></li>
+        {% endfor %}
+    </ul>
+    
+
+    <!-- Product List -->
+    {% for product in products %}
+        <div class="product">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            {% endif %}
+            <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+            <p>RS {{ product.price }}</p>
+            <form action="{% url 'add_to_cart' product.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+    {% endfor %}
 
 </body>
 </html>
-{% endblock %}
+

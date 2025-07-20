@@ -5,18 +5,6 @@ from django.shortcuts import redirect
 from django.contrib.auth import login
 from django.contrib.auth.decorators import login_required
 from .models import Order
-import qrcode
-from io import BytesIO
-import base64
-from django.shortcuts import render, redirect
-from django.views.decorators.csrf import csrf_exempt
-import qrcode
-from io import BytesIO
-import base64
-
-def home(request):
-    return render(request,'home.html')
-
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -72,29 +60,3 @@ def place_order(request):
 def order_history(request):
     orders = Order.objects.filter(user=request.user)
     return render(request, 'order_history.html', {'orders': orders})
-
-def payment_page(request):
-    cart = request.session.get('cart', [])
-    if not cart:
-        return redirect('view_cart')  # Redirect if cart is empty
-
-    total_price = 0
-    products = Product.objects.filter(pk__in=cart)
-
-    for product in products:
-        total_price += product.price  # assuming quantity = 1 for each
-
-    upi_id = "9346363970@ybl"  # Replace with your real UPI ID
-    upi_url = f"upi://pay?pa={upi_id}&pn=YourShop&am={total_price}&cu=INR"
-
-    qr = qrcode.make(upi_url)
-    buffer = BytesIO()
-    qr.save(buffer, format='PNG')
-    qr_image_base64 = base64.b64encode(buffer.getvalue()).decode()
-
-    return render(request, 'payment_page.html', {
-        'qr_image': qr_image_base64,
-        'upi_id': upi_id,
-        'total_price': total_price,
-    })
-

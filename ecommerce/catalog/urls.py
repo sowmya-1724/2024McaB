@@ -3,15 +3,13 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    path('',views.home, name='home'),
-    path('product_list', views.product_list, name='product_list'),
+    path('', views.product_list, name='product_list'),
     path('product/<int:pk>/', views.product_detail, name='product_detail'),
-    path('signup/', views.signup, name='signup'),
+     path('signup/', views.signup, name='signup'),
     path('login/', auth_views.LoginView.as_view(template_name='login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(next_page='product_list'), name='logout'),
-    path('add-to-cart/<int:pk>/', views.add_to_cart, name='add_to_cart'),
+     path('add-to-cart/<int:pk>/', views.add_to_cart, name='add_to_cart'),
     path('cart/', views.view_cart, name='view_cart'),
-    path('place_order/', views.place_order, name='place_order'),
-    path('order_history/', views.order_history, name='order_history'),
-    path('payment/', views.payment_page, name='payment_page'),
+    path('place-order/', views.place_order, name='place_order'),
+    path('order-history/', views.order_history, name='order_history'),
 ]
