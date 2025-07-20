@@ -1,3 +1,3 @@
 from django.contrib import admin
-from .models import student
-admin.site.register(student)
+from .models import Book
+admin.site.register(Book)

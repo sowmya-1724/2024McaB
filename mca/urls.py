@@ -1,5 +1,5 @@
 """
-URL configuration for myproject project.
+URL configuration for mca project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -18,5 +18,5 @@ from django.contrib import admin
 from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls')),
+    path('day8/', include('day8.urls')),
 ]
