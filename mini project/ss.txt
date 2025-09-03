@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sravani | MCA Portfolio</title>
+  <meta name="description" content="Portfolio of Sravani — MCA student. Projects: TravelKart, Canteen Management. Links: Devsnest, GitHub, LinkedIn." />
+  <style>
+    :root{
+      --bg:#0b1220;         /* deep navy */
+      --card:#111a2e;       /* card surface */
+      --muted:#8aa0c6;      /* muted text */
+      --text:#e6eefc;       /* main text */
+      --brand:#6ea8ff;      /* accent */
+      --brand-2:#8cffd9;    /* secondary accent */
+      --ring: 0 0 0 3px rgba(110,168,255,.35);
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:radial-gradient(1200px 600px at 10% -10%, rgba(110,168,255,.12), transparent), radial-gradient(1200px 800px at 110% 10%, rgba(140,255,217,.10), transparent), var(--bg); color:var(--text); font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;}
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    img{max-width:100%; display:block}
+    .container{width:min(1100px, 92%); margin-inline:auto}
+    .btn{display:inline-flex; align-items:center; gap:.5rem; padding:.8rem 1.1rem; border-radius:999px; background:linear-gradient(135deg,var(--brand),#7ad1ff); color:#0a0f1c; font-weight:600; border:none; cursor:pointer; box-shadow:var(--shadow)}
+    .btn.secondary{background:transparent; color:var(--text); border:1px solid rgba(255,255,255,.15)}
+    .btn:focus{outline:none; box-shadow:var(--ring)}
+
+    /* Header */
+    header{position:sticky; top:0; backdrop-filter:saturate(160%) blur(8px); background:linear-gradient(180deg, rgba(11,18,32,.85), rgba(11,18,32,.35)); border-bottom:1px solid rgba(255,255,255,.08); z-index:10}
+    nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .brand{display:flex; align-items:center; gap:.7rem; font-weight:800; letter-spacing:.5px}
+    .brand-dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--brand-2),var(--brand))}
+    .nav-links{display:flex; gap:1.1rem}
+    .nav-links a{padding:.5rem .8rem; border-radius:999px}
+    .nav-links a:hover{background-color:rgba(255,255,255,.06); text-decoration:none}
+
+    /* Hero */
+    .hero{display:grid; grid-template-columns: 1.1fr .9fr; gap:2rem; align-items:center; padding:48px 0 36px}
+    .tag{display:inline-flex; align-items:center; gap:.5rem; padding:.35rem .7rem; border-radius:999px; background:rgba(110,168,255,.14); color:#cfe1ff; font-weight:600; font-size:.9rem; border:1px solid rgba(110,168,255,.35)}
+    .title{font-size:clamp(2rem, 4.5vw, 3rem); line-height:1.15; margin:.6rem 0 0}
+    .subtitle{color:var(--muted); margin:.8rem 0 1.2rem; font-size:1.07rem}
+    .actions{display:flex; gap:.7rem; flex-wrap:wrap}
+    .hero-card{background:linear-gradient(180deg, rgba(17,26,46,.9), rgba(17,26,46,.7)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:18px; display:flex; gap:16px; align-items:center}
+    .avatar{width:140px; aspect-ratio:1; border-radius:22px; object-fit:cover; border:1px solid rgba(255,255,255,.12); box-shadow:var(--shadow)}
+    .note{font-size:.9rem; color:#aec3ea}
+
+    /* Section */
+    section{padding:36px 0}
+    h2{font-size:clamp(1.4rem,3.3vw,2rem); margin:0 0 14px}
+    .muted{color:var(--muted)}
+
+    /* Cards grid */
+    .grid{display:grid; gap:16px}
+    @media (min-width: 760px){ .grid.cols-3{ grid-template-columns: repeat(3, 1fr);} }
+    @media (min-width: 760px){ .grid.cols-2{ grid-template-columns: repeat(2, 1fr);} }
+
+    .card{background:linear-gradient(180deg, rgba(17,26,46,.88), rgba(17,26,46,.7)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow)}
+    .card .cover{height:170px; background:radial-gradient(120px 80px at 20% 30%, rgba(110,168,255,.35), transparent), radial-gradient(160px 100px at 80% 20%, rgba(140,255,217,.25), transparent), #0c1426}
+    .card .content{padding:16px}
+    .card h3{margin:0 0 6px; font-size:1.15rem}
+    .card p{margin:0; color:var(--muted)}
+    .card .tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .pill{font-size:.78rem; padding:.25rem .55rem; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); color:#cfe1ff}
+    .card .footer{display:flex; justify-content:space-between; align-items:center; padding:14px 16px 16px}
+
+    /* Links row */
+    .links{display:flex; gap:.6rem; flex-wrap:wrap}
+    .link-chip{display:inline-flex; align-items:center; gap:.45rem; padding:.5rem .75rem; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1)}
+    .link-chip:hover{background:rgba(255,255,255,.1); text-decoration:none}
+
+    /* Footer */
+    footer{padding:26px 0 40px; color:#9fb4dd}
+
+    /* Utility */
+    .row{display:flex; gap:14px; align-items:center; flex-wrap:wrap}
+    .spacer{height:20px}
+    .sr-only{position:absolute; left:-9999px}
+
+    /* Smooth scroll */
+    html{scroll-behavior:smooth}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="brand"><span class="brand-dot"></span> <span>Sravani · Portfolio</span></div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#links">Links</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div>
+        <span class="tag">MCA Student · Web Developer</span>
+        <h1 class="title">Hi, I'm <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent">Sravani</span>.</h1>
+        <p class="subtitle">I'm pursuing my <strong>MCA</strong> and enjoy building clean, user-friendly web applications. Here are a few of my projects and links to my work.</p>
+        <div class="actions">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#links">Contact & Links</a>
+        </div>
+        <div class="spacer"></div>
+        <div class="hero-card">
+          <!-- Replace the src below with your image path or URL -->
+          <img class="avatar" src="image.jpg" alt="Sravani profile photo" />
+          <div>
+            
+            <div class="row">
+              <a class="link-chip" href="https://devsnest.in/u/sravanisjtbb2" target="_blank" rel="noreferrer noopener" title="Devsnest Profile">Devsnest</a>
+              <a class="link-chip" href="https://github.com/ssravani5566" target="_blank" rel="noreferrer noopener" title="GitHub Profile">GitHub</a>
+              <a class="link-chip" href="https://www.linkedin.com/in/lilly-lilly-37a261373/" target="_blank" rel="noreferrer noopener" title="LinkedIn Profile">LinkedIn</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="card" aria-hidden="true">
+          <div class="cover"></div>
+          <div class="content">
+            <h3>Quick Snapshot</h3>
+            <p>• MCA (pursuing)
+              <br />• Interests: Frontend, UI, JS, DB basics
+              <br />• Strengths: Clean UI, problem-solving, teamwork
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About</h2>
+      <p class="muted">I am an MCA student with a passion for crafting simple and elegant web experiences. I like turning ideas into working prototypes and learning by building. I’m currently focusing on HTML, CSS, JavaScript, and improving my problem-solving skills through coding practice.</p>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="grid cols-2">
+        <!-- TravelKart Project Card -->
+        <article class="card">
+          <div class="cover"></div>
+          <div class="content">
+            <h3>TravelKart</h3>
+            <p class="muted">A travel booking web app concept that helps users search destinations, compare packages, and save itineraries with a clean, mobile-first UI.</p>
+            <div class="tags">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">JavaScript</span>
+            </div>
+          </div>
+          <div class="footer">
+            <a class="btn secondary" href="#" onclick="alert('   '); return false;"> Link</a>
+            <span class="muted">Student Project</span>
+          </div>
+        </article>
+
+        <!-- Canteen Management Project Card -->
+        <article class="card">
+          <div class="cover"></div>
+          <div class="content">
+            <h3>Canteen Management</h3>
+            <p class="muted">A simple system to manage menu, orders, and billing. Includes admin controls to add items and view daily sales.</p>
+            <div class="tags">
+              <span class="pill">HTML</span>
+              <span class="pill">CSS</span>
+              <span class="pill">JS</span>
+              <span class="pill">(Optional) PHP / DB</span>
+            </div>
+          </div>
+          <div class="footer">
+            <a class="btn secondary" href="#" onclick="alert(' '); return false;">Add Link</a>
+            <span class="muted">Student Project</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- LINKS -->
+    <section id="links">
+      <h2>Contact & Important Links</h2>
+      <p class="muted">Feel free to reach out via LinkedIn or check my work below.</p>
+      <div class="links">
+        <a class="link-chip" href="https://devsnest.in/u/sravanisjtbb2" target="_blank" rel="noreferrer noopener">Devsnest Profile</a>
+        <a class="link-chip" href="https://github.com/ssravani5566" target="_blank" rel="noreferrer noopener">GitHub</a>
+        <a class="link-chip" href="https://www.linkedin.com/in/lilly-lilly-37a261373/" target="_blank" rel="noreferrer noopener">LinkedIn</a>
+      </div>
+      <div class="spacer"></div>
+      <div class="card" style="padding:16px">
+        <strong>Tip:</strong>
+        <p class="muted">To change the profile image, update the <code>&lt;img class=&quot;avatar&quot; src=&quot;your-image.jpg&quot;&gt;</code> source. To add live project links, replace the <em>"Add Link"</em> buttons with your GitHub repo or deployment URLs.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <span>© <span id="year"></span> Sravani</span>
+          <span class="muted">· Built with HTML & CSS</span>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

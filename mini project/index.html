@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sowmya | Portfolio</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+</head>
+
+<body>
+
+  <header>
+	<div class="container">
+      <img src="photo.jpg" alt="photo" class="profile-img"/>
+      
+    <h1>WELCOME TO MY PORTFOLIO</h1>
+    <p>Konda Kinda Sowmya - MCA Student | Front-End Enthusiast</p>
+
+  </header>
+
+
+  <nav>
+    <a href="#about"><button>About</button></a>
+    <a href="#skills"><button>Skills</button></a>
+    <a href="#projects"><button>Projects</button></a>
+    <a href="#contact"><button>Contact</button></a>
+  </nav>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am a passionate web developer with a focus on front-end technologies. I'm currently pursuing MCA at Mother Theresa College. I enjoy creating clean and user-friendly websites.</p>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <ol>
+      <li>Python, Java, HTML, SQL</li>
+      <li>Data Structures, Problem Solving</li>
+      <li>GitHub, VS Code</li>
+    </ol>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul>
+      <li><strong>Student Management System</strong> – Java & MySQL-based CRUD app.</li>
+      <li><strong>Weather App</strong> – Python Flask app using OpenWeatherMap API.</li>
+      <li><strong>Portfolio Website</strong> – Personal site built with HTML/CSS.</li>
+    </ul>
+  </section>
+
+  <!-- Contact Section -->
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>Feel free to get in touch with me using the form below:</p>
+
+  <form action="#" method="post">
+    <!-- Name -->
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <!-- Email -->
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <!-- Mobile Number -->
+    <label for="mobile">Mobile Number:</label><br>
+    <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="10-digit number" required><br><br>
+
+    <!-- Gender -->
+    <p><strong>Gender:</strong></p>
+    <input type="radio" id="male" name="gender" value="Male">
+    <label for="male">Male</label>
+
+    <input type="radio" id="female" name="gender" value="Female">
+    <label for="female">Female</label>
+
+    <input type="radio" id="other" name="gender" value="Other">
+    <label for="other">Other</label><br><br>
+
+    <!-- Message -->
+    <label for="message">Message:</label><br>
+    <textarea id="message" name="message" rows="5" cols="40" placeholder="Your message here..." required></textarea><br><br>
+
+    <!-- Submit Button -->
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+  
+  </section>
+
+  <footer style="text-align:center; padding: 20px; background-color: #333; color: white;">
+    © 2025 Sowmya | All Rights Reserved
+  </footer>
+
+</body>
+</html>
